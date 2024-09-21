@@ -114,6 +114,43 @@ Foreign Keys:
    - One-to-Many: Add foreign key to the "many" side (e.g., Controlling_Dept in Projects).
    - Many-to-Many: Create a new table (e.g., Works_On).
 
+# ERD to Relational Schema Mapping Steps
 
+1. **Strong Entities**
+   - Map Employees table with attributes: SSN (PK), FName, LName, BDate, Gender
+   - Map Departments table with attributes: DNumber (PK), DName
+
+2. **Weak Entities**
+   - Map Dependents table (weak entity of Employees)
+     - Include partial key (Name) along with the full key of the owner entity (SSN)
+     - Full key: (SSN, Name)
+
+3. **One-to-One Relationships**
+   - No explicit one-to-one relationships shown in the images
+
+4. **One-to-Many Relationships**
+   - Employee works in Department: Add DeptNum (FK) to Employees table
+   - Department has locations: Create Department_Locations table with DeptNumber (FK) and Location
+
+5. **Many-to-Many Relationships**
+   - Employee works on Projects: Create Works_On table with EmpSSN (FK), PNumber (FK), and WHours
+
+6. **Unary Relationships**
+   - Employee supervises Employees: Add SupervisorSSN (FK) to Employees table
+
+7. **Additional Attributes**
+   - Add hiringDate to Departments table
+   - Add City to Projects table
+
+Final Table Structures:
+
+- Employees (SSN, FName, LName, BDate, Gender, DeptNum, SupervisorSSN)
+- Departments (DNumber, DName, ManagerSSN, hiringDate)
+- Department_Locations (DeptNumber, Location)
+- Projects (PNumber, PName, Location, City, DeptNumber)
+- Works_On (EmpSSN, PNumber, WHours)
+- Dependents (SSN, Name, Gender, BDate, Relationship)
+
+Note: Primary Keys are underlined, Foreign Keys are in doted lines.
 
 This mapping process transforms the conceptual ERD into a relational schema that can be implemented in a relational database management system.
