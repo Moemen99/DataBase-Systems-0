@@ -43,6 +43,7 @@ erDiagram
 1. **Identify strong entities:**
    - EMPLOYEE
    - DEPARTMENT
+   - PROJECT
   
 
 # ERD to Table Mapping Example
@@ -109,6 +110,9 @@ Foreign Keys:
 1. **Strong Entities**: Directly mapped to tables (Employees, Departments, Projects).
 2. **Multi-valued Attributes**: Create a separate table (e.g., Department_Locations).
 3. Weak Entities: Create a separate table (Dependents) with a composite primary key.
+4. **Relationships**: 
+   - One-to-Many: Add foreign key to the "many" side (e.g., Controlling_Dept in Projects).
+   - Many-to-Many: Create a new table (e.g., Works_On).
 
 
 
